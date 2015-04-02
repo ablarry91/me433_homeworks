@@ -68,7 +68,7 @@ int main() {
     // kseg0 is cacheable (0x3) or uncacheable (0x2)
     // see Chapter 2 "CPU for Devices with M4K Core"
     // of the PIC32 reference manual
-    __builtin_mtc0(_CP0_CONFIG, _CP0_CONFIG_SELECT, 0xa4210582);
+    __builtin_mtc0(_CP0_CONFIG, _CP0_CONFIG_SELECT, 0xa4210583);
     // no cache on this chip!
     // 0 data RAM access wait states
     BMXCONbits.BMXWSDRM = 0x0;
@@ -82,6 +82,7 @@ int main() {
     TRISBbits.TRISB13 = 1;  // select B13 as input
 
     // set up LED1 pin as a digital output on pin B7
+    RPB7Rbits.RPB7R = 0b0001;
     TRISBbits.TRISB7 = 0;  // select pin B7 output
     LATBbits.LATB7 = 1;    // turn on LED1
 
@@ -138,7 +139,7 @@ int main() {
     while (1) {
     // invert pin every 0.5s, set PWM duty cycle % to the pot voltage output %
     _CP0_SET_COUNT(0); // set core timer to 0, remember it counts at half the CPU clock
-    LATBINV = 0x80;// invert a pin
+    LATBINV = 0x0080;// invert a pin
     // wait for half a second, setting LED brightness to pot angle while waiting
     while (_CP0_GET_COUNT() < 10000000) {
         val = readADC();
