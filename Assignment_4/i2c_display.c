@@ -161,12 +161,24 @@ void write_char(char c, int row, int col) {
       // int val = array[x][bit];
       // int val = ASCII[c - 0x20][bit];
       // int val = 1;
-      display_pixel_set(row+x,col+bit,(val&mask));
+      display_pixel_set(col+bit,row+x,(val&mask));
       mask <<= 1;
     }
   }
   display_draw();
 }
+
+void write_string(const char *str, int row, int col) {
+    int c = 0;
+    while(str[c] != '\0') {
+        write_char(str[c], row, col);
+        row = row + 6;  //characters are 5 pixels wide, one extra pixel for space
+        ++c;
+    }
+
+    // display_draw();
+}
+
 
 static inline int pixel_pos(int row, int col) { // get the position in gddram of the pixel position
   return (row/8)*WIDTH + col;

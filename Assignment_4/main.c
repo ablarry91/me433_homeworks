@@ -115,9 +115,9 @@ int main() {
     display_clear();
 
 
-    char c = 'A';
-    write_char(c,30,30);
-    // display_draw();
+    char str[30];
+    sprintf(str, "Hello world 1337!");
+    write_string(str, 28, 32);
 
     while(1)
     {
