@@ -36,6 +36,9 @@
 ._*
 .Spotlight-V100
 .Trashes
+*.X
 ehthumbs.db
 Thumbs.db
 /Assignment_4/hw4.X/nbproject/private/
+/Assignment_4/hw4.X/build/default/
+/Assignment_4/hw4.X/dist/default/
