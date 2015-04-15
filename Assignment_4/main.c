@@ -113,15 +113,11 @@ int main() {
 
     display_init(); //sets up the i2c display
     display_clear();
-    display_pixel_set(30,30,1);
-    display_pixel_set(30,31,1);
-    display_pixel_set(30,31,1);
-    display_pixel_set(30,32,1);
-    display_pixel_set(30,33,1);
-    display_pixel_set(30,34,1);
-    display_pixel_set(30,35,1);
-    display_pixel_set(30,36,1);
-    display_draw();
+
+
+    char c = 'A';
+    write_char(c,30,30);
+    // display_draw();
 
     while(1)
     {

@@ -151,14 +151,18 @@ void display_clear() {
 }
 
 void write_char(char c, int row, int col) {
-  char array = ASCII[c - 0x20];
+  
   int x=0;
   for (x=0; x<5; x++) {
-    int bit = 0;
-    for (bit=0; bit<8; bit++) {
-      // char val = array[x][bit];
-      int val = 1;
-      display_pixel_set(row+x,col+bit,val);
+    int val = ASCII[(int)(c) - 0x20][x];
+    int bit = 1;
+    int mask = 1;
+    for (bit; bit<8; bit++) {
+      // int val = array[x][bit];
+      // int val = ASCII[c - 0x20][bit];
+      // int val = 1;
+      display_pixel_set(row+x,col+bit,(val&mask));
+      mask <<= 1;
     }
   }
   display_draw();
