@@ -151,16 +151,12 @@ void display_clear() {
 }
 
 void write_char(char c, int row, int col) {
-  
   int x=0;
   for (x=0; x<5; x++) {
     int val = ASCII[(int)(c) - 0x20][x];
     int bit = 1;
-    int mask = 1;
+    int mask = 1;  //we use bit shifting to check if the bit is 1 or not
     for (bit; bit<8; bit++) {
-      // int val = array[x][bit];
-      // int val = ASCII[c - 0x20][bit];
-      // int val = 1;
       display_pixel_set(col+bit,row+x,(val&mask));
       mask <<= 1;
     }
@@ -175,8 +171,6 @@ void write_string(const char *str, int row, int col) {
         row = row + 6;  //characters are 5 pixels wide, one extra pixel for space
         ++c;
     }
-
-    // display_draw();
 }
 
 

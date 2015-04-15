@@ -111,10 +111,9 @@ int main() {
     T2CONSET = 0x8000;
     OC1CONSET = 0x8000;
 
-    display_init(); //sets up the i2c display
+    // Set up the i2c display
+    display_init(); 
     display_clear();
-
-
     char str[30];
     sprintf(str, "Hello world 1337!");
     write_string(str, 28, 32);
