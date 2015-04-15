@@ -101,13 +101,7 @@ int main() {
 
 
     __builtin_enable_interrupts();
-    display_init(); //sets up the i2c display
-    display_clear(); 
 
-    //testing to see if i can display a single pixel
-    display_pixel_set(30,30,1);
-    display_pixel_set(31,30,0);
-    display_draw();
 
     // Initialize for our blinking LED.
     _CP0_SET_COUNT(0);
@@ -116,6 +110,18 @@ int main() {
     // Start the PWM timer.
     T2CONSET = 0x8000;
     OC1CONSET = 0x8000;
+
+    display_init(); //sets up the i2c display
+    display_clear();
+    display_pixel_set(30,30,1);
+    display_pixel_set(30,31,1);
+    display_pixel_set(30,31,1);
+    display_pixel_set(30,32,1);
+    display_pixel_set(30,33,1);
+    display_pixel_set(30,34,1);
+    display_pixel_set(30,35,1);
+    display_pixel_set(30,36,1);
+    display_draw();
 
     while(1)
     {
