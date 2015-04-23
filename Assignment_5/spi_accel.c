@@ -1,13 +1,13 @@
 #include "accel.h"
 #include <xc.h>
 // interface with the LSM303D accelerometer/magnetometer using spi
-// Wire GND to GND, VDD to 3.3V, 
+// Wire GND to GND, VDD to 3.3V,
 // SDO1             -> SDI (labeled SDA),
 // SDI1             -> SDO
 // SCK1 (B14)       -> SCL
 // some digital pin -> CS
 
-#define CS LATxbits.LATx# // replace x with some digital pin
+#define CS LATBbits.LATB3 // chip select pin
 
 // send a byte via spi and return the response
 unsigned char spi_io(unsigned char o) {
@@ -45,19 +45,19 @@ void acc_write_register(unsigned char reg, unsigned char data) {
 
 
 void acc_setup() {
-  TRISxbits.TRISx# = 0; // set CS to output and digital if necessary
+  TRISBbits.TRISB3 = 0; // set CS to output and digital if necessary
   CS = 1;
 
   // select a pin for SDI1
-  SDI1Rbits.SDI1R = 0bxxxx;
+  SDI1Rbits.SDI1R = 0b0001;
 
   // select a pin for SD01
-  RPx#Rbits.RPx#R = 0bxxxx;
+  RPB2Rbits.RPB2R = 0b0011;
 
   // Setup the master Master - SPI1
-  // we manually control SS as a digital output 
+  // we manually control SS as a digital output
   // since the pic is just starting, we know that spi is off. We rely on defaults here
- 
+
   // setup spi1
   SPI1CON = 0;              // turn off the spi module and reset it
   SPI1BUF;                  // clear the rx buffer by reading from it
@@ -67,14 +67,14 @@ void acc_setup() {
                             //    (high to low since CKP is 0)
   SPI1CONbits.MSTEN = 1;    // master operation
   SPI1CONbits.ON = 1;       // turn on spi
- 
+
   // set the accelerometer data rate to 1600 Hz. Do not update until we read values
-  acc_write_register(CTRL1, 0xAF); 
+  acc_write_register(CTRL1, 0xAF);
 
   // 50 Hz magnetometer, high resolution, temperature sensor on
-  acc_write_register(CTRL5, 0xF0); 
+  acc_write_register(CTRL5, 0xF0);
 
   // enable continuous reading of the magnetometer
-  acc_write_register(CTRL7, 0x0); 
+  acc_write_register(CTRL7, 0x0);
 }
 
