@@ -7,6 +7,7 @@
 #define CTRL1 0x20      // control register 1
 #define CTRL5 0x24      // control register 5
 #define CTRL7 0x26      // control register 7
+#define CTRL2 0x21      // control register 2
 
 #define OUT_X_L_A 0x28  // LSB of x axis acceleration register.
                         // all acceleration registers are contiguous, and this is the lowest address
@@ -15,11 +16,11 @@
 #define TEMP_OUT_L 0x05 // temperature sensor register
 
 // read len bytes from the specified register into data[]
-void acc_read_register(unsigned char reg, unsigned char data[], unsigned int len); 
+void acc_read_register(unsigned char reg, unsigned char data[], unsigned int len);
 
 // write to the register
-void acc_write_register(unsigned char reg, unsigned char data);                    
+void acc_write_register(unsigned char reg, unsigned char data);
 
 // initialize the accelerometer
-void acc_setup();                                                                  
+void acc_setup();
 #endif

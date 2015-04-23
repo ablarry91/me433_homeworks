@@ -3,6 +3,7 @@
 #include <xc.h> // processor SFR definitions
 #include <sys/attribs.h> // __ISR macro
 #include "i2c_display.h"  //library for using the i2c display
+#include "accel.h" //library for using the accelerometer
 
 //These are the available DEVCFG bits for the PIC32MX250F128B are listed in the documentation that comes with XC32, in microchip/xc32/v1.33/docs/config_docs/32mx250f128b.html
 
@@ -53,13 +54,17 @@ int readADC(void);
 int main() {
     int val;
 
+    short accels[3]; // accelerations for the 3 axes
+    short mags[3]; // magnetometer readings for the 3 axes
+    short temp;
+
     // startup
     __builtin_disable_interrupts();
     // set the CP0 CONFIG register to indicate that
     // kseg0 is cacheable (0x3) or uncacheable (0x2)
     // see Chapter 2 "CPU for Devices with M4K Core"
     // of the PIC32 reference manual
-  
+
 
 
 
@@ -112,11 +117,14 @@ int main() {
     OC1CONSET = 0x8000;
 
     // Set up the i2c display
-    display_init(); 
+    display_init();
     display_clear();
     char str[30];
     sprintf(str, "Hello world 1337!");
     write_string(str, 28, 32);
+
+    // Set up the accelerometer through SPI
+    acc_setup();
 
     while(1)
     {
@@ -126,6 +134,20 @@ int main() {
         {
             LATBINV = 0x80;
             _CP0_SET_COUNT(0);
+
+            // Try making a reading from the accelerometer
+            // read the accelerometer from all three axes
+            // the accelerometer and the pic32 are both little endian by default (the lowest address has the LSB)
+            // the accelerations are 16-bit twos compliment numbers, the same as a short
+            acc_read_register(OUT_X_L_A, (unsigned char *) accels, 6);
+            // need to read all 6 bytes in one transaction to get an update.
+            acc_read_register(OUT_X_L_M, (unsigned char *) mags, 6);
+            // read the temperature data. Its a right justified 12 bit two's compliment number
+            acc_read_register(TEMP_OUT_L, (unsigned char *) &temp, 2);
+
+            display_clear();
+            sprintf(str,"accel = %d",accels[0]);
+            write_string(str,28,24);
         }
 
         // Set PWM duty cycle % to the pot voltage output %
