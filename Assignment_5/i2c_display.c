@@ -115,11 +115,11 @@ static const char ASCII[96][5] = {
 
 void display_command(unsigned char cmd) { // write a command to the display
   unsigned char to_write[] = {0x00,cmd};  // first byte is 0 (CO = 0, DC = 0), second byte is the command
-  i2c_write_read(DISPLAY_ADDR, to_write,2, NULL, 0); 
+  i2c_write_read(DISPLAY_ADDR, to_write,2, NULL, 0);
 }
 
 void display_init() {
-  i2c_master_setup();     
+  i2c_master_setup();
                           // goes through the reset procedure
   display_command(0xAE);  // turn off display
 
@@ -138,7 +138,7 @@ void display_init() {
   display_command(0x8d); // charge pump
   display_command(0x14); // turn charge pump on (creates the ~7 Volts needed to light pixels)
   display_command(0xAF); // turn on the display
-  video_buffer[0] = 0x40; // co = 0, dc =1, allows us to send data directly from video buffer, 
+  video_buffer[0] = 0x40; // co = 0, dc =1, allows us to send data directly from video buffer,
                           //0x40 is the "next bytes have data" byte
 }
 
@@ -161,7 +161,7 @@ void write_char(char c, int row, int col) {
       mask <<= 1;
     }
   }
-  display_draw();
+  // display_draw();
 }
 
 void write_string(const char *str, int row, int col) {
@@ -171,6 +171,7 @@ void write_string(const char *str, int row, int col) {
         row = row + 6;  //characters are 5 pixels wide, one extra pixel for space
         ++c;
     }
+    display_draw();
 }
 
 
@@ -183,7 +184,7 @@ static inline unsigned char pixel_mask(int row) { // get a bitmask for the actua
 }
 
 void display_pixel_set(int row, int col,int val) { // invert the pixel at the given row and column
-  if(val) { 
+  if(val) {
     gddram[pixel_pos(row,col)] |= pixel_mask(row);   // set the pixel
   } else {
     gddram[pixel_pos(row,col)] &= ~pixel_mask(row);  // clear the pixel
