@@ -120,8 +120,8 @@ int main() {
     display_init();
     display_clear();
     char str[30];
-    sprintf(str, "Hello world 1337!");
-    write_string(str, 28, 32);
+    // sprintf(str, "Hello world 1337!");
+    // write_string(str, 28, 32);
 
     // Set up the accelerometer through SPI
     acc_setup();
@@ -145,9 +145,33 @@ int main() {
             // read the temperature data. Its a right justified 12 bit two's compliment number
             acc_read_register(TEMP_OUT_L, (unsigned char *) &temp, 2);
 
-            display_clear();
-            sprintf(str,"accel = %d",accels[0]);
-            write_string(str,28,24);
+            // display_clear();
+            sprintf(str,"aX = %1.3f",(float)accels[0]/32768*2);
+            write_string(str,0,0);
+            sprintf(str,"aY = %1.3f",(float)accels[1]/32768*2);
+            write_string(str,0,8);
+            // sprintf(str,"aZ = %1.3f",(float)accels[2]/32768*2);
+            // write_string(str,0,16);
+
+            int barX = 100*accels[0]/32768*2;
+            int barY = 100*accels[1]/32768*2;
+            // sprintf(str,"barX = %d",barX);
+            // write_string(str,0,24);
+            // sprintf(str,"barY = %d",barY);
+            // write_string(str,0,32);
+
+            write_lines(barX,barY,50,30);
+
+
+            // sprintf(str,"gX = %1.3f",(float)mags[0]/32768*2);
+            // write_string(str,0,24);
+            // sprintf(str,"gY = %1.3f",(float)mags[1]/32768*2);
+            // write_string(str,0,32);
+            // sprintf(str,"gZ = %1.3f",(float)mags[2]/32768*2);
+            // write_string(str,0,40);
+
+            // sprintf(str,"T = %1.3f",(float)temp);
+            // write_string(str,0,50);
         }
 
         // Set PWM duty cycle % to the pot voltage output %

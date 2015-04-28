@@ -78,6 +78,6 @@ void acc_setup() {
   acc_write_register(CTRL7, 0x0);
 
   // set the sensitivity to +/- 2g
-  acc_write_register(CTRL2, 0x0);
+  acc_write_register(CTRL2,0b00000000);
 }
 

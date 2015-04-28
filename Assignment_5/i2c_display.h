@@ -7,7 +7,7 @@
 #define WIDTH 128 //display width in bits
 #define HEIGHT 64 //display height, in bits
 
-void display_init(); // initialize I2C2 
+void display_init(); // initialize I2C2
 
 void display_command(unsigned char cmd); // issue a command to the display
 
@@ -22,5 +22,8 @@ int display_pixel_get(int row, int col);  // get the pixel at the given row and 
 void write_char(char c, int row, int col); //writes an ASCII character to the screen
 
 void write_string(const char *str, int row, int col); //writes a string of characters to the screen
+
+// writes graphical lines
+void write_lines(int xLen, int yLen, int xC, int yC);
 
 #endif

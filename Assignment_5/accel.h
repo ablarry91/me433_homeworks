@@ -23,4 +23,5 @@ void acc_write_register(unsigned char reg, unsigned char data);
 
 // initialize the accelerometer
 void acc_setup();
+
 #endif

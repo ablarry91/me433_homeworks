@@ -174,6 +174,49 @@ void write_string(const char *str, int row, int col) {
     display_draw();
 }
 
+void write_lines(int xLen, int yLen, int xC, int yC) {
+  int xRan = xLen/5;  //used to set the maximum length of the x and y bars
+  int yRan = yLen/5;
+  int x = 0;
+  for (x=0;x<3;x++) { //the bar will be three pixels wide
+    int y = 0;
+    for (y=0;y<20;y++) { //we evaluate if a pixel should be on or off
+      if (abs(yRan) > y & yRan>0) {
+        display_pixel_set(yC+y,xC+x,1);
+        // display_pixel_set(yC-y,xC+x,0);
+      }
+      if (abs(yRan) > y & yRan<=0) {
+        display_pixel_set(yC-y,xC+x,1);
+        // display_pixel_set(yC-y,xC+x,1);
+      }
+      if (abs(yRan) <=y & yRan>0) {
+        display_pixel_set(yC+y,xC+x,0);
+        // display_pixel_set(yC-y,xC+x,1);
+      }
+      if (abs(yRan) <=y & yRan<=0) {
+        display_pixel_set(yC-y,xC+x,0);
+        // display_pixel_set(yC-y,xC+x,0);
+      }
+      if (abs(xRan) > y & xRan>0) {
+        display_pixel_set(yC+x,xC+y,1);
+        // display_pixel_set(yC-y,xC+x,0);
+      }
+      if (abs(xRan) > y & xRan<=0) {
+        display_pixel_set(yC+x,xC-y,1);
+        // display_pixel_set(yC-y,xC+x,1);
+      }
+      if (abs(xRan) <=y & xRan>0) {
+        display_pixel_set(yC+x,xC+y,0);
+        // display_pixel_set(yC-y,xC+x,1);
+      }
+      if (abs(xRan) <=y & xRan<=0) {
+        display_pixel_set(yC+x,xC-y,0);
+        // display_pixel_set(yC-y,xC+x,0);
+      }
+    }
+  }
+}
+
 
 static inline int pixel_pos(int row, int col) { // get the position in gddram of the pixel position
   return (row/8)*WIDTH + col;
