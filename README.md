@@ -16,3 +16,12 @@ An Eagle schematic, board, and gerber files.  Includes breakout headers for opti
 ##Assignment_4
 A text library for writing a string of characters to an i2c display.
 ![ar_sys](https://github.com/ablarry91/me433_homeworks/blob/master/Assignment_4/helloWorld.JPG?raw=true "Test")
+
+##Assignment_5
+Interface a 6-axis IMU to the PIC32 and indiciate XY orientation via visual graph
+![ar_sys](https://github.com/ablarry91/me433_homeworks/blob/master/Assignment_4/helloWorld.JPG?raw=true "Test")
+
+##Assignment_9
+Solidworks designs for using a 3D printer and laser cutter.
+![ar_sys](https://github.com/ablarry91/me433_homeworks/blob/master/Assignment_9/wheel.PNG?raw=true "Test")
+![ar_sys](https://github.com/ablarry91/me433_homeworks/blob/master/Assignment_9/assembly.PNG?raw=true "Test")
