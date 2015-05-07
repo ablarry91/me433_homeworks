@@ -19,7 +19,9 @@ A text library for writing a string of characters to an i2c display.
 
 ##Assignment_5
 Interface a 6-axis IMU to the PIC32 and indiciate XY orientation via visual graph
-![ar_sys](https://github.com/ablarry91/me433_homeworks/blob/master/Assignment_4/helloWorld.JPG?raw=true "Test")
+![ar_sys](https://github.com/ablarry91/me433_homeworks/blob/master/Assignment_5/im1.png?raw=true "Test")
+![ar_sys](https://github.com/ablarry91/me433_homeworks/blob/master/Assignment_5/im2.png?raw=true "Test")
+![ar_sys](https://github.com/ablarry91/me433_homeworks/blob/master/Assignment_5/im3.png?raw=true "Test")
 
 ##Assignment_9
 Solidworks designs for using a 3D printer and laser cutter.
