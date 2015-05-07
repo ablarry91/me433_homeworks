@@ -23,7 +23,7 @@ Interface a 6-axis IMU to the PIC32 and indiciate XY orientation via visual grap
 ![ar_sys](https://github.com/ablarry91/me433_homeworks/blob/master/Assignment_5/im2.png?raw=true "Test")
 ![ar_sys](https://github.com/ablarry91/me433_homeworks/blob/master/Assignment_5/im3.png?raw=true "Test")
 
-##Assignment_9
+##Assignment_8
 Solidworks designs for using a 3D printer and laser cutter.
-![ar_sys](https://github.com/ablarry91/me433_homeworks/blob/master/Assignment_9/wheel.PNG?raw=true "Test")
-![ar_sys](https://github.com/ablarry91/me433_homeworks/blob/master/Assignment_9/assembly.PNG?raw=true "Test")
+![ar_sys](https://github.com/ablarry91/me433_homeworks/blob/master/Assignment_8/wheel.PNG?raw=true "Test")
+![ar_sys](https://github.com/ablarry91/me433_homeworks/blob/master/Assignment_8/assembly.PNG?raw=true "Test")
