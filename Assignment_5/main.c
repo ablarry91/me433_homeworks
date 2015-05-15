@@ -120,7 +120,7 @@ int main() {
     display_init();
     display_clear();
     char str[30];
-    // sprintf(str, "Hello world 1337!");
+     sprintf(str, "Hello world 1337!");
     // write_string(str, 28, 32);
 
     // Set up the accelerometer through SPI
