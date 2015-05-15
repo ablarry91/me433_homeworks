@@ -1,0 +1,53 @@
+
+
+These are the DEVCFG bits for the NU32 in standalone mode:
+#pragma config DEBUG = OFF          // Background Debugger disabled
+#pragma config FPLLMUL = MUL_20     // PLL Multiplier: Multiply by 20
+#pragma config FPLLIDIV = DIV_2     // PLL Input Divider:  Divide by 2
+#pragma config FPLLODIV = DIV_1     // PLL Output Divider: Divide by 1
+#pragma config FWDTEN = OFF         // WD timer: OFF
+#pragma config POSCMOD = HS         // Primary Oscillator Mode: High Speed xtal
+#pragma config FNOSC = PRIPLL       // Oscillator Selection: Primary oscillator w/ PLL
+#pragma config FPBDIV = DIV_1       // Peripheral Bus Clock: Divide by 1
+#pragma config BWP = OFF            // Boot write protect: OFF
+#pragma config ICESEL = ICS_PGx2    // ICE pins configured on PGx2, Boot write protect OFF.
+#pragma config FSOSCEN = OFF        // Disable second osc to get pins back
+#pragma config FSRSSEL = PRIORITY_7 // Shadow Register Set for interrupt priority 7
+
+
+These are the available DEVCFG bits for the PIC32MX250F128B are listed in the documentation that comes with XC32, in microchip/xc32/v1.33/docs/config_docs/32mx250f128b.html
+
+// DEVCFG0
+#pragma config DEBUG = x // no debugging
+#pragma config JTAGEN = x // no jtag
+#pragma config ICESEL = x // use PGED1 and PGEC1
+#pragma config PWP = x // no write protect
+#pragma config BWP = x // not boot write protect
+#pragma config CP = x // no code protect
+
+// DEVCFG1
+#pragma config FNOSC = x // use primary oscillator with pll
+#pragma config FSOSCEN = x // turn off secondary oscillator
+#pragma config IESO = x // no switching clocks
+#pragma config POSCMOD = x // high speed crystal mode
+#pragma config OSCIOFNC = x // free up secondary osc pins by turning sosc off
+#pragma config FPBDIV = x // divide CPU freq by 1 for peripheral bus clock
+#pragma config FCKSM = x // do not enable clock switch
+#pragma config WDTPS = x // slowest wdt
+#pragma config WINDIS = x // no wdt window
+#pragma config FWDTEN = x // wdt off by default
+#pragma config FWDTWINSZ = x // wdt window at 25%
+
+// DEVCFG2 - get the CPU clock to 40MHz
+#pragma config FPLLIDIV = x // divide input clock to be in range 4-5MHz
+#pragma config FPLLMUL = x // multiply clock after FPLLIDIV
+#pragma config FPLLODIV = x // divide clock after FPLLMUL to get 40MHz
+#pragma config UPLLIDIV = x // divide 8MHz input clock, then multiply by 12 to get 48MHz for USB
+#pragma config UPLLEN = x // USB clock on
+
+// DEVCFG3
+#pragma config USERID = 0 // some 16bit userid, doesn't matter what
+#pragma config PMDL1WAY = x // allow only one reconfiguration
+#pragma config IOL1WAY = x // allow only one reconfiguration
+#pragma config FUSBIDIO = x // USB ID pin not controlled by USB module
+#pragma config FVBUSONIO = x // USB BUSON not controlled by USB module
