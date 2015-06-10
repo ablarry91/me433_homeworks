@@ -1,0 +1,42 @@
+#ifndef I2C_DISPLAY_H__
+#define I2C_DISPLAY_H__
+// bare-bones driver for interfacing with the SSD1306 OLED display via I2C
+// not fully featured, just demonstrates basic operation
+// note that resetting the PIC does not perform a reset on the OLED display, only power cycling does
+
+#define WIDTH 128 //display width in bits
+#define HEIGHT 64 //display height, in bits
+
+void display_init(); // initialize I2C2 
+
+void display_command(unsigned char cmd); // issue a command to the display
+
+void display_draw();                       // draw the buffer in the display
+
+void display_clear();                     // clear the display
+
+void display_pixel_set(int row, int col, int val); // set the pixel at the given row and column
+
+int display_pixel_get(int row, int col);  // get the pixel at the given row and column
+
+// Writes the parameter string to the display.
+//
+// Params:
+// const char* str - the null-teriminated string to write.
+// int row - 0-indexed row of the upper-left corner of the start of the string.
+// int col - 0-indexed column of the upper-left corner of the start of the string.
+void display_write_string(const char* str, int row, int col);
+
+void display_draw_v_line_seg(int row_start, int col, int length);
+
+void display_draw_v_line(int col);
+
+void display_draw_h_line_seg(int row, int col_start, int length);
+
+void display_draw_h_line(int row);
+
+void display_draw_v_bar(int pct);
+
+void display_draw_h_bar(int pct);
+
+#endif
