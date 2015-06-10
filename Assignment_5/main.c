@@ -121,7 +121,7 @@ int main() {
     display_clear();
     char str[30];
      sprintf(str, "Hello world 1337!");
-    // write_string(str, 28, 32);
+     write_string(str, 28, 32);
 
     // Set up the accelerometer through SPI
     acc_setup();

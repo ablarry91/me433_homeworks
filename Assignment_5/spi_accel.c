@@ -53,6 +53,7 @@ void acc_setup() {
 
   // select a pin for SD01
   RPB2Rbits.RPB2R = 0b0011;
+  
 
   // Setup the master Master - SPI1
   // we manually control SS as a digital output
