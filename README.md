@@ -30,4 +30,4 @@ Solidworks designs for using a 3D printer and laser cutter.
 
 ##Robot Cup
 Final Design for Robot Cup 2015
-![ar_sys](https://github.com/ablarry91/me433_homeworks/blob/master/Assignment_16/robot.PNG?raw=true "Test")
+![ar_sys](https://github.com/ablarry91/me433_homeworks/blob/master/Assignment_16/robot.jpg?raw=true "Test")
